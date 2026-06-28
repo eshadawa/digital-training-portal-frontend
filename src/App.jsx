@@ -1,5 +1,10 @@
-import { Link } from "react-router-dom";
-function App() {
+import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Login from "./pages/Login";
+
+/* ---------------- HOME ---------------- */
+function Home({ courses }) {
   return (
     <div>
       {/* Navbar */}
@@ -16,17 +21,16 @@ function App() {
         <h2>Digital Training Portal</h2>
 
         <div>
-          <span style={{ marginRight: "20px", cursor: "pointer" }}>
+          <Link to="/" style={navLinkStyle}>
             Home
-          </span>
-          <span style={{ marginRight: "20px", cursor: "pointer" }}>
+          </Link>
+          <Link to="/courses" style={navLinkStyle}>
             Courses
-          </span>
-          <span style={{ marginRight: "20px", cursor: "pointer" }}>
-            Certificates
-          </span>
-          <span style={{ cursor: "pointer" }}>Login</span>
-        </div>
+          </Link>
+          <span style={{ marginRight: "20px", cursor: "pointer" }}>Certificates</span>
+<Link to="/login" style={{ color: "white", textDecoration: "none" }}>
+  Login
+</Link>        </div>
       </nav>
 
       {/* Hero Section */}
@@ -37,23 +41,11 @@ function App() {
           background: "#e0f2fe",
         }}
       >
-        <h1
-          style={{
-            fontSize: "50px",
-            color: "#000",
-            marginBottom: "25px",
-          }}
-        >
+        <h1 style={{ fontSize: "50px", color: "#000", marginBottom: "25px" }}>
           DigiLocker, Aadhaar & PAN Services Training
         </h1>
 
-        <p
-          style={{
-            fontSize: "20px",
-            color: "#242121ff",
-            marginBottom: "35px",
-          }}
-        >
+        <p style={{ fontSize: "20px", color: "#242121ff", marginBottom: "35px" }}>
           Learn Government Digital Services Professionally
         </p>
 
@@ -84,98 +76,41 @@ function App() {
           color: "#242121ff",
         }}
       >
-        <div
-          style={{
-            width: "320px",
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-          
-          }}
-        >
-          <h2 style={{ color: "#000" }}>DigiLocker Training</h2>
+        {courses.length === 0 ? (
+          <p>Loading courses...</p>
+        ) : (
+          courses.map((course) => (
+            <div
+              key={course.id}
+              style={{
+                width: "320px",
+                background: "white",
+                padding: "25px",
+                borderRadius: "12px",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+              }}
+            >
+              <h2 style={{ color: "#000" }}>{course.name}</h2>
 
-          <p>
-            Learn document upload, verification, sharing, digital certificates,
-            and DigiLocker account management.
-          </p>
+              <p>{course.description}</p>
 
-          <button
-            style={{
-              background: "#2563eb",
-              color: "white",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "6px",
-              cursor: "pointer",
-            }}
-          >
-            View Course
-          </button>
-        </div>
-
-        <div
-          style={{
-            width: "320px",
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-          
-          }}
-        >
-          <h2 style={{ color: "#000" }}>Aadhaar Services</h2>
-
-          <p>
-            Learn Aadhaar download, update, biometric authentication, e-KYC,
-            PVC card ordering and verification.
-          </p>
-
-          <button
-            style={{
-              background: "#2563eb",
-              color: "white",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "6px",
-              cursor: "pointer",
-            }}
-          >
-            View Course
-          </button>
-        </div>
-
-        <div
-          style={{
-            width: "320px",
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-          
-          }}
-        >
-          <h2 style={{ color: "#000" }}>PAN Services</h2>
-
-          <p>
-            Learn PAN application, PAN correction, PAN-Aadhaar linking,
-            verification and e-PAN download.
-          </p>
-
-          <button
-            style={{
-              background: "#2563eb",
-              color: "white",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "6px",
-              cursor: "pointer",
-            }}
-          >
-            View Course
-          </button>
-        </div>
+              <Link to={`/course/${course.slug}`}>
+                <button
+                  style={{
+                    background: "#2563eb",
+                    color: "white",
+                    border: "none",
+                    padding: "10px 20px",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                  }}
+                >
+                  View Course
+                </button>
+              </Link>
+            </div>
+          ))
+        )}
       </section>
 
       {/* Footer */}
@@ -192,5 +127,117 @@ function App() {
     </div>
   );
 }
+
+/* ---------------- DETAIL PAGE ---------------- */
+function CourseDetail({ courses }) {
+  const { slug } = useParams();
+
+  const course = courses.find((c) => c.slug === slug);
+
+  if (!course) {
+    return <h2 style={{ textAlign: "center" }}>Course not found</h2>;
+  }
+
+  return (
+    <div style={{ padding: "40px" }}>
+      <Link to="/">⬅ Back</Link>
+
+      <h1>{course.name}</h1>
+      <p>{course.description}</p>
+
+      <h3>Benefits</h3>
+      <ul>
+        {course.benefits.map((b, i) => (
+          <li key={i}>{b}</li>
+        ))}
+      </ul>
+
+      <h3>Steps</h3>
+      <ol>
+        {course.steps.map((s, i) => (
+          <li key={i}>{s}</li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+/* ---------------- APP ---------------- */
+function CoursesPage({ courses }) {
+  return (
+    <div style={{ padding: "40px" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>
+        All Courses
+      </h1>
+
+      <div
+        style={{
+          display: "flex",
+          gap: "25px",
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
+        {courses.map((course) => (
+          <div
+            key={course.id}
+            style={{
+              width: "300px",
+              background: "white",
+              padding: "20px",
+              borderRadius: "12px",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+            }}
+          >
+            <h2 style={{ color: "#000" }}>{course.name}</h2>
+
+            <p style={{ color: "#444" }}>{course.description}</p>
+
+            <Link
+              to={`/course/${course.slug}`}
+              style={{
+                display: "inline-block",
+                marginTop: "10px",
+                padding: "8px 15px",
+                background: "#2563eb",
+                color: "white",
+                borderRadius: "6px",
+                textDecoration: "none",
+              }}
+            >
+              View Details
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+function App() {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/courses")
+      .then((res) => setCourses(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <Routes>
+  <Route path="/" element={<Home courses={courses} />} />
+  <Route path="/courses" element={<CoursesPage courses={courses} />} />
+  <Route path="/course/:slug" element={<CourseDetail courses={courses} />} />
+  <Route path="/login" element={<Login />} />
+</Routes>
+  );
+}
+
+const navLinkStyle = {
+  marginRight: "20px",
+  cursor: "pointer",
+  color: "white",
+  textDecoration: "none",
+};
 
 export default App;
