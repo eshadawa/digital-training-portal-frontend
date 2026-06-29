@@ -218,7 +218,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/courses")
+    .get("https://digital-training-backend.onrender.com/api/courses")
       .then((res) => setCourses(res.data))
       .catch((err) => console.log(err));
   }, []);
