@@ -19,42 +19,39 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      setLoading(true);
+  try {
+    setLoading(true);
 
-     const res = await axios.post(
-  "https://digital-training-backend.onrender.com/api/register",
-  formData
-);
+    const res = await axios.post(
+      "https://digital-training-backend.onrender.com/api/login",
+      {
+        email,
+        password,
+      }
+    );
 
-      // Save token
-      localStorage.setItem(
-        "token",
-        res.data.token
-      );
+    localStorage.setItem(
+      "token",
+      res.data.token
+    );
 
-      alert("Login Successful 🎉");
+    alert("Login Successful 🎉");
 
-      console.log("LOGIN RESPONSE:", res.data);
+    navigate("/");
 
-      setTimeout(() => {
-        navigate("/");
-      }, 800);
+  } catch (err) {
+    console.log(err);
 
-    } catch (err) {
-      alert(
-        err.response?.data?.message ||
-        "Login Failed ❌"
-      );
-
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+    alert(
+      err.response?.data?.message ||
+      "Login Failed ❌"
+    );
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <div className="login-container">
 
