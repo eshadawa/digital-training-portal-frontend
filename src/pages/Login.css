@@ -1,0 +1,171 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.login-container{
+  min-height:100vh;
+  display:flex;
+  font-family:'Segoe UI',sans-serif;
+}
+
+.login-left{
+  flex:1;
+  background:
+  linear-gradient(
+    rgba(37,99,235,.8),
+    rgba(109,40,217,.8)
+  ),
+  url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3");
+  background-size:cover;
+  background-position:center;
+  color:white;
+}
+
+.overlay{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px;
+}
+
+.overlay h1{
+  font-size:3rem;
+  margin-bottom:20px;
+}
+
+.overlay h2{
+  font-size:2.5rem;
+  margin-bottom:20px;
+}
+
+.overlay p{
+  font-size:1.1rem;
+  line-height:1.8;
+}
+
+.login-right{
+  flex:1;
+  background:#f8fafc;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.login-card{
+  width:450px;
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.08);
+}
+
+.login-card h2{
+  font-size:2rem;
+  margin-bottom:10px;
+}
+
+.login-card p{
+  color:#64748b;
+  margin-bottom:30px;
+}
+
+.input-group{
+  display:flex;
+  align-items:center;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:20px;
+}
+
+.input-group input{
+  border:none;
+  outline:none;
+  flex:1;
+  font-size:15px;
+}
+
+.icon{
+  color:#64748b;
+  margin-right:10px;
+}
+
+.eye{
+  cursor:pointer;
+  color:#64748b;
+}
+
+.options{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:25px;
+  font-size:14px;
+}
+
+.options a{
+  color:#2563eb;
+  text-decoration:none;
+}
+
+.login-btn{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  background:
+  linear-gradient(
+    90deg,
+    #2563eb,
+    #7c3aed
+  );
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.google-btn{
+  width:100%;
+  padding:15px;
+  margin-top:15px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  background:white;
+  cursor:pointer;
+}
+
+.divider{
+  text-align:center;
+  margin:20px 0;
+  color:#94a3b8;
+}
+
+.register{
+  text-align:center;
+  margin-top:20px;
+}
+
+.register span{
+  color:#2563eb;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+@media(max-width:900px){
+
+  .login-left{
+    display:none;
+  }
+
+  .login-right{
+    flex:1;
+  }
+
+  .login-card{
+    width:90%;
+  }
+}

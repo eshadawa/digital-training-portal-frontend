@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 
 /* ---------------- HOME ---------------- */
 function Home({ courses }) {
@@ -229,6 +231,7 @@ function App() {
   <Route path="/courses" element={<CoursesPage courses={courses} />} />
   <Route path="/course/:slug" element={<CourseDetail courses={courses} />} />
   <Route path="/login" element={<Login />} />
+  <Route path="/register" element={<Register />} />
 </Routes>
   );
 }

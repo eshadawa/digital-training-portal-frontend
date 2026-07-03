@@ -1,11 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {
+  FaEnvelope,
+  FaLock,
+  FaEye,
+  FaEyeSlash,
+} from "react-icons/fa";
 
-function Login() {
+import "./Login.css";
+
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -13,97 +22,170 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/login`,
-        {
-          email,
-          password,
-        }
+      setLoading(true);
+
+     const res = await axios.post(
+  "https://digital-training-backend.onrender.com/api/register",
+  formData
+);
+
+      // Save token
+      localStorage.setItem(
+        "token",
+        res.data.token
       );
 
-      // ✅ Save token
-      localStorage.setItem("token", res.data.token);
+      alert("Login Successful 🎉");
 
-      setMessage("Login Successful 🎉");
+      console.log("LOGIN RESPONSE:", res.data);
 
-      // ✅ redirect to home after login
       setTimeout(() => {
         navigate("/");
       }, 800);
 
-      console.log("LOGIN RESPONSE:", res.data);
-
     } catch (err) {
-      setMessage(err.response?.data?.message || "Login failed ❌");
+      alert(
+        err.response?.data?.message ||
+        "Login Failed ❌"
+      );
+
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div style={styles.container}>
-      <form onSubmit={handleLogin} style={styles.card}>
-        <h2 style={{ textAlign: "center" }}>Login</h2>
+    <div className="login-container">
 
-        <input
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={styles.input}
-        />
+      <div className="login-left">
+        <div className="overlay">
+          <h1>Digital Training Portal</h1>
 
-        <input
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={styles.input}
-        />
+          <h2>
+            Learn Digital Government
+            Services Professionally
+          </h2>
 
-        <button type="submit" style={styles.button}>
-          Login
-        </button>
-
-        {message && (
-          <p style={{ textAlign: "center", marginTop: "10px" }}>
-            {message}
+          <p>
+            DigiLocker, Aadhaar, PAN,
+            e-Governance Training &
+            Certification Platform
           </p>
-        )}
-      </form>
+        </div>
+      </div>
+
+      <div className="login-right">
+
+        <form
+          className="login-card"
+          onSubmit={handleLogin}
+        >
+          <h2>Welcome Back 👋</h2>
+
+          <p>
+            Login to continue your learning
+            journey
+          </p>
+
+          <div className="input-group">
+            <FaEnvelope className="icon" />
+
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) =>
+                setEmail(e.target.value)
+              }
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <FaLock className="icon" />
+
+            <input
+              type={
+                showPassword
+                  ? "text"
+                  : "password"
+              }
+              placeholder="Password"
+              value={password}
+              onChange={(e) =>
+                setPassword(e.target.value)
+              }
+              required
+            />
+
+            <span
+              className="eye"
+              onClick={() =>
+                setShowPassword(
+                  !showPassword
+                )
+              }
+            >
+              {showPassword ? (
+                <FaEyeSlash />
+              ) : (
+                <FaEye />
+              )}
+            </span>
+          </div>
+
+          <div className="options">
+            <label>
+              <input type="checkbox" />
+              Remember Me
+            </label>
+
+            <a href="#">
+              Forgot Password?
+            </a>
+          </div>
+
+          <button
+            type="submit"
+            className="login-btn"
+            disabled={loading}
+          >
+            {loading
+              ? "Signing In..."
+              : "Login"}
+          </button>
+
+          <div className="divider">
+            OR
+          </div>
+
+          <button
+            type="button"
+            className="google-btn"
+          >
+            Continue with Google
+          </button>
+
+          <p className="register">
+            Don't have an account?
+            <span
+              onClick={() =>
+                navigate("/register")
+              }
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              {" "}
+              Register
+            </span>
+          </p>
+
+        </form>
+
+      </div>
+
     </div>
   );
 }
-
-const styles = {
-  container: {
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    background: "#f1f5f9",
-  },
-  card: {
-    padding: "30px",
-    background: "white",
-    borderRadius: "10px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
-    width: "300px",
-  },
-  input: {
-    padding: "10px",
-    borderRadius: "6px",
-    border: "1px solid #ccc",
-  },
-  button: {
-    padding: "10px",
-    background: "#2563eb",
-    color: "white",
-    border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
-  },
-};
-
-export default Login;
