@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -23,16 +24,29 @@ function Home({ courses }) {
         <h2>Digital Training Portal</h2>
 
         <div>
-          <Link to="/" style={navLinkStyle}>
-            Home
-          </Link>
-          <Link to="/courses" style={navLinkStyle}>
-            Courses
-          </Link>
-          <span style={{ marginRight: "20px", cursor: "pointer" }}>Certificates</span>
-<Link to="/login" style={{ color: "white", textDecoration: "none" }}>
-  Login
-</Link>        </div>
+  <Link to="/" style={navLinkStyle}>Home</Link>
+
+  <Link to="/courses" style={navLinkStyle}>Courses</Link>
+
+  <span style={{ marginRight: "20px", cursor: "pointer" }}>
+    Certificates
+  </span>
+
+  {localStorage.getItem("token") ? (
+    <button
+      onClick={() => {
+        localStorage.removeItem("token");
+        window.location.href = "/login";
+      }}
+    >
+      Logout
+    </button>
+  ) : (
+    <Link to="/login" style={{ color: "white" }}>
+      Login
+    </Link>
+  )}
+</div>
       </nav>
 
       {/* Hero Section */}
@@ -217,24 +231,64 @@ function CoursesPage({ courses }) {
 }
 function App() {
   const [courses, setCourses] = useState([]);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     axios
-    .get("https://digital-training-backend.onrender.com/api/courses")
+      .get("https://digital-training-backend.onrender.com/api/courses")
       .then((res) => setCourses(res.data))
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <Routes>
-  <Route path="/" element={<Home courses={courses} />} />
-  <Route path="/courses" element={<CoursesPage courses={courses} />} />
-  <Route path="/course/:slug" element={<CourseDetail courses={courses} />} />
-  <Route path="/login" element={<Login />} />
-  <Route path="/register" element={<Register />} />
-</Routes>
+      <Route
+        path="/"
+        element={
+          token
+            ? <Home courses={courses} />
+            : <Navigate to="/login" />
+        }
+      />
+
+      <Route
+        path="/login"
+        element={
+          token
+            ? <Navigate to="/" />
+            : <Login />
+        }
+      />
+
+      <Route
+        path="/register"
+        element={
+          token
+            ? <Navigate to="/" />
+            : <Register />
+        }
+      />
+
+      <Route
+        path="/courses"
+        element={
+          token
+            ? <CoursesPage courses={courses} />
+            : <Navigate to="/login" />
+        }
+      />
+
+      <Route
+        path="/course/:slug"
+        element={
+          token
+            ? <CourseDetail courses={courses} />
+            : <Navigate to="/login" />
+        }
+      />
+    </Routes>
   );
-}
+}   // <-- App function yahan close hoga
 
 const navLinkStyle = {
   marginRight: "20px",

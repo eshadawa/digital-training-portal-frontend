@@ -25,21 +25,21 @@ export default function Login() {
     setLoading(true);
 
     const res = await axios.post(
-      "https://digital-training-backend.onrender.com/api/login",
-      {
-        email,
-        password,
-      }
-    );
+  "http://localhost:5000/api/login",
+  {
+    email,
+    password,
+  }
+);
 
     localStorage.setItem(
-      "token",
-      res.data.token
-    );
+  "token",
+  res.data.token
+);
 
-    alert("Login Successful 🎉");
+alert("Login Successful 🎉");
 
-    navigate("/");
+window.location.href = "/";
 
   } catch (err) {
     console.log(err);
