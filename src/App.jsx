@@ -1,13 +1,26 @@
+import DigiLockerCourse from "./pages/DigiLockerCourse";
 import { Navigate } from "react-router-dom";
 import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
+import DigiLockerLearning from "./pages/DigiLockerLearning";
+import DigiLockerLesson1 from "./pages/DigiLockerLesson1";
+import DigiLockerLesson2 from "./pages/DigiLockerLesson2";
+import DigiLockerLesson3 from "./pages/DigiLockerLesson3";
+import CourseCompleted from "./pages/CourseCompleted";
+import CertificatePage from "./pages/CertificatePage";
+import Certificates from "./pages/Certificates";
+import AadhaarCourse from "./pages/AadhaarCourse";
+import AadhaarLesson1 from "./pages/AadhaarLesson1";
+import AadhaarLesson2 from "./pages/AadhaarLesson2";
+import AadhaarCompleted from "./pages/AadhaarCompleted";
+import AadhaarCertificate from "./pages/AadhaarCertificate";
 
 /* ---------------- HOME ---------------- */
 function Home({ courses }) {
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div>
       {/* Navbar */}
@@ -22,25 +35,50 @@ function Home({ courses }) {
         }}
       >
         <h2>Digital Training Portal</h2>
-
-        <div>
+              <div>
+          <span
+  style={{
+    color: "white",
+    marginRight: "20px",
+    fontWeight: "bold",
+  }}
+>
+  Welcome, {user?.name} 👋
+</span>
   <Link to="/" style={navLinkStyle}>Home</Link>
 
   <Link to="/courses" style={navLinkStyle}>Courses</Link>
 
-  <span style={{ marginRight: "20px", cursor: "pointer" }}>
-    Certificates
-  </span>
+  <Link
+  to="/certificates"
+  style={navLinkStyle}
+>
+  Certificates
+</Link>
 
   {localStorage.getItem("token") ? (
     <button
-      onClick={() => {
-        localStorage.removeItem("token");
-        window.location.href = "/login";
-      }}
-    >
-      Logout
-    </button>
+  onClick={() => {
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+   const ok = window.confirm(
+  `👋 ${user?.name}\n\nAre you sure you want to logout?`
+);
+
+    if (ok) {
+     localStorage.removeItem("token");
+localStorage.removeItem("user");
+
+alert("You have been logged out successfully 👋");
+
+window.location.href = "/login";
+    }
+
+  }}
+>
+  Logout
+</button>
   ) : (
     <Link to="/login" style={{ color: "white" }}>
       Login
@@ -235,13 +273,79 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://digital-training-backend.onrender.com/api/courses")
+      .get("http://localhost:5000/api/courses")
       .then((res) => setCourses(res.data))
       .catch((err) => console.log(err));
   }, []);
 
   return (
+    
     <Routes>
+      <Route
+path="/course/digilocker"
+element={<DigiLockerCourse/>}
+/>
+<Route
+  path="/course/digilocker/learn"
+  element={<DigiLockerLesson1 />}
+/>
+<Route
+  path="/course/aadhaar"
+  element={<AadhaarCourse />}
+ />
+
+<Route
+  path="/course/aadhaar/learn"
+  element={<AadhaarLesson1 />}
+ />
+ <Route
+  path="/course/aadhaar/lesson2"
+  element={<AadhaarLesson2 />}
+/>
+
+<Route
+  path="/course/aadhaar/completed"
+  element={<AadhaarCompleted />}
+/>
+
+<Route
+  path="/aadhaar-certificate"
+  element={<AadhaarCertificate />}
+/>
+
+<Route
+  path="/course/digilocker/lesson2"
+  element={<DigiLockerLesson2 />}
+/>
+<Route
+  path="/course/digilocker/lesson3"
+  element={<DigiLockerLesson3 />}
+/>
+<Route
+path="/course/digilocker/completed"
+element={<CourseCompleted />}
+/>
+<Route
+path="/course/digilocker/completed"
+element={<CertificatePage/>}
+/>
+<Route
+  path="/certificate"
+  element={<CertificatePage />}
+/>
+<Route
+    path="/course/digilocker/learn"
+    element={<DigiLockerLearning />}
+/>
+
+<Route
+  path="/certificates"
+  element={
+    token
+      ? <Certificates />
+      : <Navigate to="/login" />
+  }
+/>
       <Route
         path="/"
         element={
