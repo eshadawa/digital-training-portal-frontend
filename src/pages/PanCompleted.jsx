@@ -1,13 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
-export default function AadhaarCompleted() {
-
+export default function PanCompleted() {
   const user = JSON.parse(localStorage.getItem("user"));
   const name = user?.name || "Student";
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
 const handleDownload = () => {
-  localStorage.setItem("aadhaarCompleted", "true");
-  navigate("/aadhaar-certificate");
+  console.log("Button clicked");
+
+  localStorage.setItem("panCompleted", "true");
+
+  console.log("Saved:", localStorage.getItem("panCompleted"));
+
+  navigate("/pan-certificate");
 };
 
   return (
@@ -22,49 +26,55 @@ const handleDownload = () => {
     >
       <div
         style={{
-          width: "700px",
           background: "white",
           padding: "50px",
-          borderRadius: "20px",
+          borderRadius: "25px",
+          boxShadow: "0 15px 40px rgba(0,0,0,.15)",
+          width: "700px",
           textAlign: "center",
-          boxShadow: "0 10px 30px rgba(0,0,0,.15)",
         }}
       >
         <h1
           style={{
             color: "#16a34a",
-            fontSize: "55px",
+            fontSize: "52px",
             marginBottom: "10px",
           }}
         >
           🎉 Congratulations!
         </h1>
 
-        <h2>Hello, {name}</h2>
-
-        <p
-          style={{
-            fontSize: "28px",
-            marginTop: "25px",
-          }}
-        >
-          You have successfully completed the
-        </p>
-
         <h2
           style={{
-            color: "#2563eb",
-            marginTop: "10px",
-            fontSize: "40px",
+            marginBottom: "30px",
+            fontSize: "36px",
           }}
         >
-          Aadhaar Training Course
+          Hello, {name}
         </h2>
 
         <p
           style={{
+            fontSize: "30px",
+            lineHeight: "45px",
+          }}
+        >
+          You have successfully completed the
+          <br />
+          <span
+            style={{
+              color: "#2563eb",
+              fontWeight: "700",
+            }}
+          >
+            PAN Card Training Course
+          </span>
+        </p>
+
+        <p
+          style={{
             fontSize: "24px",
-            marginBottom: "35px",
+            marginTop: "20px",
           }}
         >
           Your certificate is ready.
@@ -73,11 +83,12 @@ const handleDownload = () => {
         <button
   onClick={handleDownload}
   style={{
+    marginTop: "35px",
     background: "#2563eb",
     color: "white",
     border: "none",
-    padding: "18px 45px",
-    borderRadius: "10px",
+    padding: "18px 40px",
+    borderRadius: "12px",
     fontSize: "22px",
     cursor: "pointer",
   }}
@@ -86,12 +97,17 @@ const handleDownload = () => {
 </button>
 
         <br />
-        <br />
 
-        <Link to="/">
+        <Link
+          to="/"
+          style={{
+            display: "inline-block",
+            marginTop: "30px",
+            fontSize: "20px",
+          }}
+        >
           Back to Home
         </Link>
-
       </div>
     </div>
   );

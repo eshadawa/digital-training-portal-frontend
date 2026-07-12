@@ -1,14 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
-export default function AadhaarCompleted() {
 
+export default function VoterCompleted() {
   const user = JSON.parse(localStorage.getItem("user"));
   const name = user?.name || "Student";
+
   const navigate = useNavigate();
 
-const handleDownload = () => {
-  localStorage.setItem("aadhaarCompleted", "true");
-  navigate("/aadhaar-certificate");
-};
+  const handleDownload = () => {
+    localStorage.setItem("voterCompleted", "true");
+    navigate("/voter-certificate");
+  };
 
   return (
     <div
@@ -58,7 +59,7 @@ const handleDownload = () => {
             fontSize: "40px",
           }}
         >
-          Aadhaar Training Course
+          Voter ID Training Course
         </h2>
 
         <p
@@ -71,19 +72,19 @@ const handleDownload = () => {
         </p>
 
         <button
-  onClick={handleDownload}
-  style={{
-    background: "#2563eb",
-    color: "white",
-    border: "none",
-    padding: "18px 45px",
-    borderRadius: "10px",
-    fontSize: "22px",
-    cursor: "pointer",
-  }}
->
-  Download Certificate
-</button>
+          onClick={handleDownload}
+          style={{
+            background: "#2563eb",
+            color: "white",
+            border: "none",
+            padding: "18px 45px",
+            borderRadius: "10px",
+            fontSize: "22px",
+            cursor: "pointer",
+          }}
+        >
+          Download Certificate
+        </button>
 
         <br />
         <br />
@@ -91,7 +92,6 @@ const handleDownload = () => {
         <Link to="/">
           Back to Home
         </Link>
-
       </div>
     </div>
   );

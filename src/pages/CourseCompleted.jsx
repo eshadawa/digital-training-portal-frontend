@@ -4,12 +4,19 @@ import jsPDF from "jspdf";
 import certificate from "../assets/certificate1.png";
 
 export default function CourseCompleted() {
+
+  console.log("CourseCompleted Loaded");
+
+  localStorage.setItem("digilockerCompleted", "true");
+
   const user = JSON.parse(localStorage.getItem("user"));
   const name = user?.name || "Student";
+  
 
   const downloadCertificate = async () => {
+    localStorage.setItem("digilockerCompleted", "true");
     const input = document.getElementById("certificate");
-
+    
     const canvas = await html2canvas(input, {
       scale: 2,
     });

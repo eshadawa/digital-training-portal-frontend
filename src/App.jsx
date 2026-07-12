@@ -17,6 +17,15 @@ import AadhaarLesson1 from "./pages/AadhaarLesson1";
 import AadhaarLesson2 from "./pages/AadhaarLesson2";
 import AadhaarCompleted from "./pages/AadhaarCompleted";
 import AadhaarCertificate from "./pages/AadhaarCertificate";
+import PanCourse from "./pages/PanCourse";
+import PanLesson1 from "./pages/PanLesson1";
+import PanLesson2 from "./pages/PanLesson2";
+import PanCompleted from "./pages/PanCompleted";
+import PanCertificate from "./pages/PanCertificate";
+import VoterCourse from "./pages/VoterCourse";
+import VoterLesson1 from "./pages/VoterLesson1";
+import VoterCompleted from "./pages/VoterCompleted";
+import VoterCertificate from "./pages/VoterCertificate";
 
 /* ---------------- HOME ---------------- */
 function Home({ courses }) {
@@ -311,6 +320,51 @@ element={<DigiLockerCourse/>}
 <Route
   path="/aadhaar-certificate"
   element={<AadhaarCertificate />}
+/>
+
+<Route
+  path="/course/pan"
+  element={<PanCourse />}
+/>
+
+<Route
+  path="/course/pan/learn"
+  element={<PanLesson1 />}
+/>
+
+<Route
+  path="/course/pan/lesson2"
+  element={<PanLesson2 />}
+/>
+
+<Route
+  path="/course/pan/completed"
+  element={<PanCompleted />}
+/>
+
+<Route
+  path="/pan-certificate"
+  element={<PanCertificate />}
+/>
+
+<Route
+  path="/course/voterid"
+  element={<VoterCourse />}
+/>
+
+<Route
+  path="/course/voter/learn"
+  element={<VoterLesson1 />}
+/>
+
+<Route
+  path="/course/voter/completed"
+  element={<VoterCompleted />}
+/>
+
+<Route
+  path="/voter-certificate"
+  element={<VoterCertificate />}
 />
 
 <Route
