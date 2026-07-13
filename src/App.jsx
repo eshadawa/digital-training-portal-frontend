@@ -281,8 +281,8 @@ function App() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/courses")
+    axios.get(
+  "https://digital-training-backend.onrender.com/api/courses")
       .then((res) => setCourses(res.data))
       .catch((err) => console.log(err));
   }, []);

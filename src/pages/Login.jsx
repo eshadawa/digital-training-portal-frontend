@@ -25,7 +25,7 @@ export default function Login() {
     setLoading(true);
 
     const res = await axios.post(
-  "http://localhost:5000/api/login",
+  "https://digital-training-backend.onrender.com/api/login",
   {
     email,
     password,
