@@ -1,3 +1,4 @@
+import "./Home.css";
 import DigiLockerCourse from "./pages/DigiLockerCourse";
 import { Navigate } from "react-router-dom";
 import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
@@ -33,16 +34,8 @@ function Home({ courses }) {
   return (
     <div>
       {/* Navbar */}
-      <nav
-        style={{
-          background: "#30436eff",
-          color: "white",
-          padding: "15px 40px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      <nav className="navbar">
+      
         <h2>Digital Training Portal</h2>
               <div>
           <span
@@ -97,7 +90,7 @@ window.location.href = "/login";
       </nav>
 
       {/* Hero Section */}
-      <section
+      <section className="hero-section"
         style={{
           textAlign: "center",
           padding: "100px 20px",
@@ -128,7 +121,7 @@ window.location.href = "/login";
       </section>
 
       {/* Courses Section */}
-      <section
+      <section className="courses-section"
         style={{
           display: "flex",
           gap: "25px",
@@ -144,7 +137,8 @@ window.location.href = "/login";
         ) : (
           courses.map((course) => (
             <div
-              key={course.id}
+               className="course-card"
+                key={course.id}
               style={{
                 width: "320px",
                 background: "white",
@@ -177,7 +171,7 @@ window.location.href = "/login";
       </section>
 
       {/* Footer */}
-      <footer
+      <footer className="footer"
         style={{
           background: "#111827",
           color: "white",
