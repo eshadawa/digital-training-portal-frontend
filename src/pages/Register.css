@@ -18,7 +18,7 @@
     ),
     url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3");
   background-size: cover;
-  background-position: center;
+background-position:center center;
   display: flex;
   align-items: center;
 }
@@ -44,20 +44,37 @@
   opacity: 0.95;
 }
 
-.register-right {
-  flex: 1;
-  background: #f8fafc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.register-right{
+  flex:1;
+  background:#f8fafc;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px;
 }
 
-.register-card {
-  width: 450px;
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+.register-card{
+  width:100%;
+  max-width:450px;
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 10px 40px rgba(0,0,0,.1);
+  transition:all .3s ease;
+}
+
+.register-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 45px rgba(0,0,0,.15);
+}
+
+.register-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(37,99,235,.30);
+}
+
+.register-btn:active{
+  transform:translateY(0);
 }
 
 .register-card h2 {
@@ -70,14 +87,15 @@
   margin-bottom: 25px;
 }
 
-.input-group {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 12px 15px;
-  margin-bottom: 18px;
-  background: white;
+.input-group{
+  display:flex;
+  align-items:center;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:12px 15px;
+  margin-bottom:18px;
+  background:white;
+  transition:all .3s ease;
 }
 
 .input-group input {
@@ -86,6 +104,11 @@
   flex: 1;
   margin-left: 10px;
   font-size: 16px;
+}
+
+.input-group:focus-within{
+  border-color:#2563eb;
+  box-shadow:0 0 0 3px rgba(37,99,235,.15);
 }
 
 .icon {
@@ -97,25 +120,23 @@
   color: #64748b;
 }
 
-.register-btn {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(
-    90deg,
-    #2563eb,
-    #7c3aed
-  );
-  color: white;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 10px;
+.register-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(90deg,#2563eb,#7c3aed);
+  color:white;
+  font-size:17px;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:10px;
+  transition:.3s ease;
 }
 
-.register-btn:hover {
-  transform: translateY(-2px);
+.register-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(37,99,235,.30);
 }
 
 .login-link {
@@ -129,16 +150,88 @@
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
-  .register-left {
-    display: none;
-  }
+@media (max-width:992px){
 
-  .register-right {
-    width: 100%;
-  }
-
-  .register-card {
-    width: 90%;
-  }
+.register-container{
+flex-direction:column;
 }
+
+.register-left{
+width:100%;
+min-height:300px;
+}
+
+.overlay{
+padding:40px 25px;
+text-align:center;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+.overlay h1{
+font-size:2.4rem;
+}
+
+.overlay h2{
+font-size:1.8rem;
+}
+
+.overlay p{
+font-size:1rem;
+}
+
+.register-right{
+padding:30px 20px;
+}
+
+.register-card{
+width:100%;
+max-width:450px;
+}
+
+}
+
+@media (max-width:576px){
+
+.overlay{
+padding:30px 20px;
+}
+
+.overlay h1{
+font-size:2rem;
+}
+
+.overlay h2{
+font-size:1.5rem;
+}
+
+.overlay p{
+font-size:.95rem;
+}
+
+.register-card{
+padding:25px;
+border-radius:15px;
+}
+
+.register-card h2{
+font-size:1.7rem;
+}
+
+.register-card p{
+font-size:.95rem;
+}
+
+.input-group{
+padding:12px;
+}
+
+.register-btn{
+padding:13px;
+font-size:15px;
+}
+
+}
+
