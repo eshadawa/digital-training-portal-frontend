@@ -1,7 +1,12 @@
-import "./Home.css";
+import "./Navbar.css";
+import {
+  FaHome,
+  FaBookOpen,
+  FaCertificate,
+} from "react-icons/fa";
 import DigiLockerCourse from "./pages/DigiLockerCourse";
 import { Navigate } from "react-router-dom";
-import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Login from "./pages/Login";
@@ -31,63 +36,90 @@ import VoterCertificate from "./pages/VoterCertificate";
 /* ---------------- HOME ---------------- */
 function Home({ courses }) {
   const user = JSON.parse(localStorage.getItem("user"));
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
   return (
     <div>
+      {menuOpen && (
+  <div
+    className="overlay"
+    onClick={() => setMenuOpen(false)}
+  ></div>
+)}
       {/* Navbar */}
       <nav className="navbar">
-      
-        <h2>Digital Training Portal</h2>
-              <div>
-          <span
-  style={{
-    color: "white",
-    marginRight: "20px",
-    fontWeight: "bold",
-  }}
+        <button
+  className="menu-btn"
+  onClick={() => setMenuOpen(!menuOpen)}
 >
-  Welcome, {user?.name} 👋
-</span>
-  <Link to="/" style={navLinkStyle}>Home</Link>
+  {menuOpen ? "✕" : "☰"}
+</button>
+  <h2 className="logo">Digital Training Portal</h2>
 
-  <Link to="/courses" style={navLinkStyle}>Courses</Link>
+  <div className={`nav-right ${menuOpen ? "active" : ""}`}>
+    <span className="welcome-text">
+      Welcome, {user?.name} 👋
+    </span>
 
-  <Link
-  to="/certificates"
-  style={navLinkStyle}
+    <Link
+  to="/"
+  className={`nav-link ${
+    location.pathname === "/" ? "active-link" : ""
+  }`}
+  onClick={() => setMenuOpen(false)}
 >
-  Certificates
+  <FaHome /> Home
 </Link>
 
-  {localStorage.getItem("token") ? (
-    <button
-  onClick={() => {
-
-    const user = JSON.parse(localStorage.getItem("user"));
-
-   const ok = window.confirm(
-  `👋 ${user?.name}\n\nAre you sure you want to logout?`
-);
-
-    if (ok) {
-     localStorage.removeItem("token");
-localStorage.removeItem("user");
-
-alert("You have been logged out successfully 👋");
-
-window.location.href = "/login";
-    }
-
-  }}
+    <Link
+  to="/courses"
+  className={`nav-link ${
+    location.pathname === "/courses" ? "active-link" : ""
+  }`}
+  onClick={() => setMenuOpen(false)}
 >
-  Logout
-</button>
-  ) : (
-    <Link to="/login" style={{ color: "white" }}>
-      Login
-    </Link>
-  )}
-</div>
-      </nav>
+  <FaBookOpen /> Courses
+</Link>
+
+    <Link
+  to="/certificates"
+  className={`nav-link ${
+    location.pathname === "/certificates" ? "active-link" : ""
+  }`}
+  onClick={() => setMenuOpen(false)}
+>
+  <FaCertificate /> Certificates
+</Link>
+
+    {localStorage.getItem("token") ? (
+      <button
+        className="logout-btn"
+        onClick={() => {
+          const user = JSON.parse(localStorage.getItem("user"));
+
+          const ok = window.confirm(
+            `👋 ${user?.name}\n\nAre you sure you want to logout?`
+          );
+
+          if (ok) {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            alert("You have been logged out successfully 👋");
+
+            window.location.href = "/login";
+          }
+        }}
+      >
+        Logout
+      </button>
+    ) : (
+      <Link to="/login" className="nav-link">
+        Login
+      </Link>
+    )}
+  </div>
+</nav>
 
       {/* Hero Section */}
       <section className="hero-section"
@@ -104,20 +136,21 @@ window.location.href = "/login";
         <p style={{ fontSize: "20px", color: "#242121ff", marginBottom: "35px" }}>
           Learn Government Digital Services Professionally
         </p>
-
-        <button
-          style={{
-            background: "#2563eb",
-            color: "white",
-            border: "none",
-            padding: "15px 35px",
-            borderRadius: "8px",
-            cursor: "pointer",
-            fontSize: "18px",
-          }}
-        >
-          Start Learning
-        </button>
+        <Link to="/courses">
+          <button
+            style={{
+              background: "#2563eb",
+              color: "white",
+              border: "none",
+              padding: "15px 35px",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontSize: "18px",
+            }}
+          >
+            Start Learning
+          </button>
+        </Link>
       </section>
 
       {/* Courses Section */}
