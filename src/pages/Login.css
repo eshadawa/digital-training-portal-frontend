@@ -175,6 +175,11 @@ padding:70px;
   margin-top:22px;
   text-align:center;
   color:#64748b;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  flex-wrap:wrap;
 }
 
 .login span{
@@ -270,4 +275,8 @@ padding:13px;
 font-size:15px;
 }
 
+}
+.login{
+  text-align:center;
+  line-height:1.6;
 }
