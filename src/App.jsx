@@ -40,9 +40,9 @@ function Home({ courses }) {
   const location = useLocation();
   return (
     <div>
-      {menuOpen && (
+     {menuOpen && (
   <div
-    className="overlay"
+    className="menu-overlay"
     onClick={() => setMenuOpen(false)}
   ></div>
 )}

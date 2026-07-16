@@ -63,7 +63,7 @@ window.location.href = "/";
     <div className="login-container">
 
       <div className="login-left">
-        <div className="overlay">
+        <div className="login-overlay">
           <h1>Digital Training Portal</h1>
 
           <h2>
@@ -92,8 +92,8 @@ window.location.href = "/";
             journey
           </p>
 
-          <div className="input-group">
-            <FaEnvelope className="icon" />
+          <div className="login-input-group">
+            <FaEnvelope className="login-icon" />
 
             <input
               type="email"
@@ -106,8 +106,8 @@ window.location.href = "/";
             />
           </div>
 
-          <div className="input-group">
-            <FaLock className="icon" />
+          <div className="login-input-group">
+            <FaLock className="login-icon" />
 
             <input
               type={
@@ -124,7 +124,7 @@ window.location.href = "/";
             />
 
             <span
-              className="eye"
+              className="login-eye"
               onClick={() =>
                 setShowPassword(
                   !showPassword

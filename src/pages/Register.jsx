@@ -70,7 +70,7 @@ export default function Register() {
   return (
     <div className="register-container">
       <div className="register-left">
-        <div className="overlay">
+        <div className="register-overlay">
           <h1>Digital Training Portal</h1>
 
           <h2>
@@ -97,8 +97,8 @@ export default function Register() {
             Start your digital learning journey today
           </p>
 
-          <div className="input-group">
-            <FaUser className="icon" />
+          <div className="register-input-group">
+            <FaUser className="register-icon" />
             <input
               type="text"
               name="name"
@@ -109,8 +109,8 @@ export default function Register() {
             />
           </div>
 
-          <div className="input-group">
-            <FaEnvelope className="icon" />
+          <div className="register-input-group">
+            <FaEnvelope className="register-icon" />
             <input
               type="email"
               name="email"
@@ -121,8 +121,8 @@ export default function Register() {
             />
           </div>
 
-          <div className="input-group">
-            <FaLock className="icon" />
+          <div className="register-input-group">
+            <FaLock className="register-icon" />
 
             <input
               type={showPassword ? "text" : "password"}
@@ -134,7 +134,7 @@ export default function Register() {
             />
 
             <span
-              className="eye"
+              className="register-eye"
               onClick={() =>
                 setShowPassword(!showPassword)
               }
@@ -147,8 +147,8 @@ export default function Register() {
             </span>
           </div>
 
-          <div className="input-group">
-            <FaLock className="icon" />
+          <div className="register-input-group">
+            <FaLock className="register-icon" />
 
             <input
               type={showConfirm ? "text" : "password"}
@@ -160,7 +160,7 @@ export default function Register() {
             />
 
             <span
-              className="eye"
+              className="register-eye"
               onClick={() =>
                 setShowConfirm(!showConfirm)
               }
