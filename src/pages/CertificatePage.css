@@ -1,0 +1,147 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+.certificate-page{
+    min-height:100vh;
+    background:#eef5ff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+}
+
+.certificate-page h1{
+    font-size:42px;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.certificate-page p{
+    font-size:18px;
+    color:#555;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.certificate{
+    width:842px;
+    height:595px;
+    background:url("../assets/certificate1.png") center/cover no-repeat;
+    position:relative;
+    margin-bottom:30px;
+}
+
+.certificate-name{
+    position:absolute;
+    top:280px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:36px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.download-btn{
+    padding:15px 35px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:#fff;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.download-btn:hover{
+    background:#1d4ed8;
+}
+
+.certificate-wrapper{
+    width:100%;
+    overflow-x:auto;
+    display:flex;
+    justify-content:center;
+    padding:10px 0 20px;
+}
+
+.certificate{
+    width:842px;
+    height:595px;
+    position:relative;
+    flex-shrink:0;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width:900px){
+
+.certificate{
+    width:700px;
+    height:495px;
+}
+
+.certificate-name{
+    top:232px;
+    font-size:30px;
+}
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+.certificate-page{
+    padding:20px 10px;
+}
+
+.certificate-page h1{
+    font-size:30px;
+}
+
+.certificate-page p{
+    font-size:15px;
+}
+
+.certificate{
+    width:100%;
+    max-width:360px;
+    aspect-ratio:842/595;
+    height:auto;
+}
+
+.certificate-name{
+    top:47%;
+    font-size:18px;
+}
+
+.download-btn{
+    width:100%;
+    max-width:320px;
+    font-size:16px;
+}
+
+}
+.certificate-wrapper{
+    justify-content:flex-start;
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width:480px){
+
+.certificate{
+    max-width:320px;
+}
+
+.certificate-name{
+    font-size:16px;
+}
+
+}

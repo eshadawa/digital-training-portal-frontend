@@ -27,22 +27,27 @@ export default function DigiLockerCourse() {
             <span>🟢 Beginner</span>
 
           </div>
-
           <div className="hero-buttons">
-            <div className="hero-buttons">
 
   <Link to="/course/digilocker/learn">
     <button className="primary-btn">
-      Start Learning
+        Start Learning
     </button>
-  </Link>
+</Link>
 
-  <button className="secondary-btn">
-    Download Notes
-  </button>
+  <a
+    href="/notes/digilocker.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <button className="secondary-btn">
+      Download Notes
+    </button>
+  </a>
 
 </div>
-          </div>
+          
+          
 
         </div>
 

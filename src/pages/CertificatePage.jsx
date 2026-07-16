@@ -1,11 +1,10 @@
-import certificate from "../assets/certificate1.png";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import "./CertificatePage.css";
 
 export default function CertificatePage() {
 
-  const user = JSON.parse(localStorage.getItem("user"));
-
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
   const name = user?.name || "Student";
 
   const downloadCertificate = async () => {
@@ -28,14 +27,7 @@ export default function CertificatePage() {
 
   return (
 
-    <div
-      style={{
-        textAlign:"center",
-        padding:"40px",
-        background:"#f3f4f6",
-        minHeight:"100vh"
-      }}
-    >
+    <div className="certificate-page">
 
       <h1>🎉 Congratulations!</h1>
 
@@ -43,46 +35,21 @@ export default function CertificatePage() {
         You have successfully completed the DigiLocker Training Course.
       </p>
 
-      <div
-        id="certificate"
-        style={{
-          width:"842px",
-          height:"595px",
-          margin:"40px auto",
-          backgroundImage:`url(${certificate})`,
-          backgroundSize:"cover",
-          position:"relative"
-        }}
-      >
+      <div className="certificate-wrapper">
 
-        <h1
-          style={{
-            position:"absolute",
-            top:"280px",
-            width:"100%",
-            textAlign:"center",
-            fontSize:"36px"
-          }}
-        >
-          {name}
-        </h1>
+        <div id="certificate" className="certificate">
+
+          <h1 className="certificate-name">
+            {name}
+          </h1>
+
+        </div>
 
       </div>
 
       <button
-
         onClick={downloadCertificate}
-
-        style={{
-          padding:"15px 35px",
-          background:"#2563eb",
-          color:"white",
-          border:"none",
-          borderRadius:"10px",
-          cursor:"pointer",
-          fontSize:"18px"
-        }}
-
+        className="download-btn"
       >
         Download Certificate
       </button>
