@@ -170,13 +170,13 @@ body{
   color:#94a3b8;
 }
 
-.register{
+.login{
   margin-top:22px;
   text-align:center;
   color:#64748b;
 }
 
-.register span{
+.login span{
   color:#2563eb;
   font-weight:600;
   cursor:pointer;
@@ -227,24 +227,43 @@ body{
 
 @media (max-width:576px){
 
-  .login-left{
-    min-height:280px;
-  }
+.login-overlay{
+padding:30px 20px;
+}
 
-  .overlay{
-    padding:30px 20px;
-  }
+.login-overlay h1{
+font-size:2rem;
+}
 
-  .overlay h1{
-    font-size:32px;
-  }
+.login-overlay h2{
+font-size:1.5rem;
+}
 
-  .overlay h2{
-    font-size:22px;
-  }
+.login-overlay p{
+font-size:.95rem;
+}
 
-  .overlay p{
-    font-size:16px;
-  }
+.login-card{
+padding:25px;
+border-radius:15px;
+}
+
+.login-card h2{
+font-size:1.7rem;
+}
+
+.login-card p{
+font-size:.95rem;
+}
+
+.login-input-group{
+padding:12px;
+}
+
+.login-btn{
+padding:13px;
+font-size:15px;
+}
 
 }
+
