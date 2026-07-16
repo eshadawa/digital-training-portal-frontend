@@ -171,7 +171,7 @@ window.location.href = "/";
             Continue with Google
           </button>
 
-          <p className="register">
+          <p className="login">
             Don't have an account?
             <span
               onClick={() =>
