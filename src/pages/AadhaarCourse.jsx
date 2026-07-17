@@ -1,60 +1,49 @@
-import { Link } from "react-router-dom";
-import hero from "../assets/hero.png";
-import "./AadhaarCourse.css";
+import CourseTemplate from "../components/CourseTemplate";
 
 export default function AadhaarCourse() {
+
   return (
-    <div className="aadhaar-page">
 
-      <section className="aadhaar-hero">
+    <CourseTemplate
 
-        <div className="hero-left">
+      title="Aadhaar Card Training"
 
-          <h1>Aadhaar Card Training</h1>
+      description="Learn Aadhaar Registration, Updates, eKYC, PVC Card, Biometric Authentication and Government Workflows."
 
-          <p>
-            Learn Aadhaar Registration, Updates,
-            eKYC, PVC Card, Biometric Authentication
-            and Government Workflows.
-          </p>
+      image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900"
 
-          <div className="hero-badges">
+      rating="4.9"
 
-            <div className="badge">⭐ 4.9 Rating</div>
+      learners="15,000"
 
-            <div className="badge">👨‍🎓 15,000 Learners</div>
+      duration="40 Minutes"
 
-            <div className="badge">⏱ 40 Minutes</div>
+      level="Beginner"
 
-            <div className="badge">🟢 Beginner</div>
+      startLink="/course/aadhaar/lesson1"
 
-          </div>
+      notes="/notes/aadhaar.pdf"
 
-          <div className="hero-buttons">
+      modules={[
 
-            <Link to="/course/aadhaar/learn">
-              <button className="start-btn">
-                Start Learning
-              </button>
-            </Link>
+        {
+          title: "Aadhaar Registration",
+          description:
+            "Learn complete Aadhaar enrollment process.",
+          link: "/course/aadhaar/lesson1",
+        },
 
-            <button className="notes-btn">
-              Download Notes
-            </button>
+        {
+          title: "Aadhaar Updates",
+          description:
+            "Name, DOB, Address, Mobile and Biometric updates.",
+          link: "/course/aadhaar/lesson2",
+        },
 
-          </div>
+      ]}
 
-        </div>
+    />
 
-        <div className="hero-right">
-          <img
-            src={hero}
-            alt="Aadhaar Training"
-          />
-        </div>
-
-      </section>
-
-    </div>
   );
+
 }

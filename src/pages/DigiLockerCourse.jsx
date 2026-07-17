@@ -1,77 +1,56 @@
-import "./DigiLockerCourse.css";
-import { Link } from "react-router-dom";
+import CourseTemplate from "../components/CourseTemplate";
 
 export default function DigiLockerCourse() {
+
   return (
-    <div className="course-page">
 
-      <section className="hero">
+    <CourseTemplate
 
-        <div className="hero-left">
+      title="DigiLocker Training"
 
-          <h1>DigiLocker Training</h1>
+      description="Learn DigiLocker from scratch with practical demonstrations, official government workflows and quizzes."
 
-          <p>
-            Learn DigiLocker from scratch with practical demonstrations,
-            official government workflows and quizzes.
-          </p>
+      image="https://img.youtube.com/vi/roQ-fHoCw_c/maxresdefault.jpg"
 
-          <div className="course-info">
+      rating="4.9"
 
-            <span>⭐ 4.9 Rating</span>
+      learners="12,000"
 
-            <span>👨‍🎓 12,000 Learners</span>
+      duration="35 Minutes"
 
-            <span>⏱ 35 Minutes</span>
+      level="Beginner"
 
-            <span>🟢 Beginner</span>
+      startLink="/course/digilocker/learn"
 
-          </div>
-          <div className="hero-buttons">
+      notes="/notes/digilocker.pdf"
 
-  <Link to="/course/digilocker/learn">
-    <button className="primary-btn">
-        Start Learning
-    </button>
-</Link>
+      modules={[
 
-  <a
-    href="/notes/digilocker.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <button className="secondary-btn">
-      Download Notes
-    </button>
-  </a>
+        {
+          title: "DigiLocker Basics",
+          description:
+            "Introduction to DigiLocker, account creation and dashboard overview.",
+          link: "/course/digilocker/lesson1",
+        },
 
-</div>
-          
-          
+        {
+          title: "Upload & Manage Documents",
+          description:
+            "Upload certificates, manage folders and organize documents.",
+          link: "/course/digilocker/lesson2",
+        },
 
-        </div>
+        {
+          title: "Share Documents",
+          description:
+            "Share files securely using official DigiLocker services.",
+          link: "/course/digilocker/lesson3",
+        },
 
-        <div className="hero-right">
+      ]}
 
-          <img
-            src="https://img.youtube.com/vi/roQ-fHoCw_c/maxresdefault.jpg"
-            alt="Digilocker"
-          />
-
-        </div>
-
-      </section>
-      <section className="modules">
-
-    <div className="module-card">
-    
-
-
-        </div>
-
-    </section>
-
-</div>
+    />
 
   );
+
 }

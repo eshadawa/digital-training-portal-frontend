@@ -331,7 +331,7 @@ element={<DigiLockerCourse/>}
  />
 
 <Route
-  path="/course/aadhaar/learn"
+  path="/course/aadhaar/lesson1"
   element={<AadhaarLesson1 />}
  />
  <Route

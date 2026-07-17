@@ -1,131 +1,47 @@
-import { Link } from "react-router-dom";
+import CourseTemplate from "../components/CourseTemplate";
 
 export default function PanCourse() {
+
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#eef5ff",
-      }}
-    >
-      {/* Hero Section */}
 
-      <div
-        style={{
-          background: "linear-gradient(90deg,#2563eb,#6d28d9)",
-          color: "white",
-          padding: "70px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        <div style={{ maxWidth: "600px" }}>
-          <h1
-            style={{
-              fontSize: "64px",
-              fontWeight: "700",
-              marginBottom: "20px",
-            }}
-          >
-            PAN Card Training
-          </h1>
+    <CourseTemplate
 
-          <p
-            style={{
-              fontSize: "22px",
-              lineHeight: "38px",
-            }}
-          >
-            Learn PAN Card Registration, Corrections,
-            e-PAN Download, Linking with Aadhaar,
-            and PAN Card Uses step by step.
-          </p>
+      title="PAN Card Training"
 
-          <div
-            style={{
-              display: "flex",
-              gap: "20px",
-              marginTop: "35px",
-              flexWrap: "wrap",
-            }}
-          >
-            <div style={badgeStyle}>
-              ⭐ 4.9 Rating
-            </div>
+      description="Learn PAN Registration, Correction, e-PAN Download and PAN-Aadhaar Linking."
 
-            <div style={badgeStyle}>
-              👨‍🎓 10,000 Learners
-            </div>
+      image="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900"
 
-            <div style={badgeStyle}>
-              ⏱ 30 Minutes
-            </div>
+      rating="4.8"
 
-            <div style={badgeStyle}>
-              🟢 Beginner
-            </div>
-          </div>
+      learners="10,000"
 
-          <div
-            style={{
-              marginTop: "45px",
-              display: "flex",
-              gap: "20px",
-            }}
-          >
-            <Link to="/course/pan/learn">
-              <button style={startBtn}>
-                Start Learning
-              </button>
-            </Link>
+      duration="30 Minutes"
 
-            <button style={notesBtn}>
-              Download Notes
-            </button>
-          </div>
-        </div>
+      level="Beginner"
 
-        <img
-          src="https://img.youtube.com/vi/BtUIy_Vnk-8/hqdefault.jpg"
-          alt="PAN Card Training"
-          style={{
-            width: "500px",
-            borderRadius: "18px",
-            boxShadow: "0 10px 25px rgba(0,0,0,.3)",
-            marginTop: "20px",
-          }}
-        />
-      </div>
-    </div>
+      startLink="/course/pan/learn"
+
+      notes="/notes/pan.pdf"
+
+      modules={[
+
+        {
+          title:"New PAN Application",
+          description:"Apply for a new PAN card step-by-step.",
+          link:"/course/pan/lesson1"
+        },
+
+        {
+          title:"PAN Correction",
+          description:"Update PAN details and corrections.",
+          link:"/course/pan/lesson2"
+        }
+
+      ]}
+
+    />
+
   );
+
 }
-
-const badgeStyle = {
-  background: "rgba(255,255,255,.18)",
-  padding: "12px 22px",
-  borderRadius: "50px",
-  fontSize: "20px",
-};
-
-const startBtn = {
-  background: "white",
-  color: "#2563eb",
-  border: "none",
-  padding: "18px 35px",
-  borderRadius: "12px",
-  fontSize: "24px",
-  cursor: "pointer",
-  fontWeight: "600",
-};
-
-const notesBtn = {
-  background: "transparent",
-  color: "white",
-  border: "2px solid white",
-  padding: "18px 35px",
-  borderRadius: "12px",
-  fontSize: "24px",
-  cursor: "pointer",
-};
