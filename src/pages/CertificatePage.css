@@ -1,3 +1,7 @@
+html,
+body{
+    overflow-x:hidden;
+}
 *{
     margin:0;
     padding:0;
@@ -6,16 +10,16 @@
 }
 
 .certificate-page{
-    min-height:100vh;
+    min-height:100dvh;   /* 100vh ki jagah */
     background:#eef5ff;
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;   /* center nahi */
     padding:40px 20px;
 }
 
-.certificate-page h1{
+.certificate-title{
     font-size:42px;
     margin-bottom:15px;
     text-align:center;
@@ -31,9 +35,11 @@
 .certificate{
     width:842px;
     height:595px;
-    background:url("../assets/certificate1.png") center/cover no-repeat;
     position:relative;
     margin-bottom:30px;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
 .certificate-name{
@@ -63,17 +69,19 @@
 
 .certificate-wrapper{
     width:100%;
-    overflow-x:auto;
     display:flex;
     justify-content:center;
-    padding:10px 0 20px;
+    align-items:center;
+    overflow:hidden;
+    padding:20px 10px;
 }
 
 .certificate{
-    width:842px;
-    height:595px;
+    width:min(842px,100%);
+    aspect-ratio:842/595;
+    height:auto;
+    background:url("../assets/certificate1.png") center/cover no-repeat;
     position:relative;
-    flex-shrink:0;
 }
 
 /* ================= TABLET ================= */
@@ -94,54 +102,48 @@
 
 
 /* ================= MOBILE ================= */
-
 @media (max-width:768px){
 
-.certificate-page{
-    padding:20px 10px;
-}
+  .certificate-page{
+      min-height:auto;
+      padding:20px 15px 40px;
+      justify-content:flex-start;
+  }
 
-.certificate-page h1{
+}
+@media (max-width:768px){
+
+  .certificate-page{
+    padding:20px 15px;
+  }
+
+  .certificate-title{
     font-size:30px;
-}
+  }
 
-.certificate-page p{
+  .certificate-page p{
     font-size:15px;
-}
+    margin-bottom:20px;
+  }
 
-.certificate{
+  .certificate{
     width:100%;
     max-width:360px;
-    aspect-ratio:842/595;
-    height:auto;
-}
+  }
 
-.certificate-name{
+  .certificate-name{
+    width:90%;
+    left:50%;
     top:47%;
+    transform:translateX(-50%);
+    text-align:center;
     font-size:18px;
-}
+    white-space:normal;
+  }
 
-.download-btn{
+  .download-btn{
     width:100%;
     max-width:320px;
-    font-size:16px;
-}
-
-}
-.certificate-wrapper{
-    justify-content:flex-start;
-}
-
-/* ================= SMALL MOBILE ================= */
-
-@media (max-width:480px){
-
-.certificate{
-    max-width:320px;
-}
-
-.certificate-name{
-    font-size:16px;
-}
+  }
 
 }

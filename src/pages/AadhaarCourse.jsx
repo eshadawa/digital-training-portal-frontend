@@ -1,138 +1,60 @@
 import { Link } from "react-router-dom";
-import hero from "../assets/hero.png"; // image ka naam baad me batata hu
+import hero from "../assets/hero.png";
+import "./AadhaarCourse.css";
 
 export default function AadhaarCourse() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#eef5ff",
-      }}
-    >
-      {/* Hero */}
+    <div className="aadhaar-page">
 
-      <div
-        style={{
-          background: "linear-gradient(90deg,#2563eb,#6d28d9)",
-          color: "white",
-          padding: "70px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        <div style={{ maxWidth: "600px" }}>
-          <h1
-            style={{
-              fontSize: "64px",
-              fontWeight: "700",
-              marginBottom: "20px",
-            }}
-          >
-            Aadhaar Card Training
-          </h1>
+      <section className="aadhaar-hero">
 
-          <p
-            style={{
-              fontSize: "22px",
-              lineHeight: "38px",
-            }}
-          >
+        <div className="hero-left">
+
+          <h1>Aadhaar Card Training</h1>
+
+          <p>
             Learn Aadhaar Registration, Updates,
             eKYC, PVC Card, Biometric Authentication
             and Government Workflows.
           </p>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "20px",
-              marginTop: "35px",
-              flexWrap: "wrap",
-            }}
-          >
-            <div
-              style={badgeStyle}
-            >
-              ⭐ 4.9 Rating
-            </div>
+          <div className="hero-badges">
 
-            <div
-              style={badgeStyle}
-            >
-              👨‍🎓 15,000 Learners
-            </div>
+            <div className="badge">⭐ 4.9 Rating</div>
 
-            <div
-              style={badgeStyle}
-            >
-              ⏱ 40 Minutes
-            </div>
+            <div className="badge">👨‍🎓 15,000 Learners</div>
 
-            <div
-              style={badgeStyle}
-            >
-              🟢 Beginner
-            </div>
+            <div className="badge">⏱ 40 Minutes</div>
+
+            <div className="badge">🟢 Beginner</div>
+
           </div>
 
-          <div
-            style={{
-              marginTop: "45px",
-              display: "flex",
-              gap: "20px",
-            }}
-          >
+          <div className="hero-buttons">
+
             <Link to="/course/aadhaar/learn">
-              <button
-                style={startBtn}
-              >
+              <button className="start-btn">
                 Start Learning
               </button>
             </Link>
 
-            <button
-              style={notesBtn}
-            >
+            <button className="notes-btn">
               Download Notes
             </button>
+
           </div>
+
         </div>
 
-        <img
-  src="https://img.youtube.com/vi/EefYzwJ5CbA/hqdefault.jpg"
-  alt="Aadhaar Training"
-/>
-      </div>
+        <div className="hero-right">
+          <img
+            src={hero}
+            alt="Aadhaar Training"
+          />
+        </div>
+
+      </section>
+
     </div>
   );
 }
-
-const badgeStyle = {
-  background: "rgba(255,255,255,.18)",
-  padding: "12px 22px",
-  borderRadius: "50px",
-  fontSize: "20px",
-};
-
-const startBtn = {
-  background: "white",
-  color: "#2563eb",
-  border: "none",
-  padding: "18px 35px",
-  borderRadius: "12px",
-  fontSize: "24px",
-  cursor: "pointer",
-  fontWeight: "600",
-};
-
-const notesBtn = {
-  background: "transparent",
-  color: "white",
-  border: "2px solid white",
-  padding: "18px 35px",
-  borderRadius: "12px",
-  fontSize: "24px",
-  cursor: "pointer",
-};

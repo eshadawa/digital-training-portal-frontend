@@ -29,15 +29,23 @@ export default function CertificatePage() {
 
     <div className="certificate-page">
 
-      <h1>🎉 Congratulations!</h1>
+      <h1 className="certificate-title">
+  🎉 Congratulations!
+</h1>
 
       <p>
-        You have successfully completed the DigiLocker Training Course.
+        You have successfully completed the DigiLocker Training Course. 
       </p>
 
       <div className="certificate-wrapper">
 
-        <div id="certificate" className="certificate">
+       <div
+  id="certificate"
+  className="certificate"
+  style={{
+    backgroundImage: `url(${certificateImage})`,
+  }}
+>
 
           <h1 className="certificate-name">
             {name}
