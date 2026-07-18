@@ -32,14 +32,16 @@ body{
     margin-bottom:30px;
 }
 
-.certificate{
-    width:842px;
-    height:595px;
-    position:relative;
-    margin-bottom:30px;
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+.certificate {
+  width: 842px;
+  height: 595px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+  overflow: hidden;
 }
 
 .certificate-name{
@@ -120,7 +122,16 @@ body{
   .certificate-title{
     font-size:30px;
   }
+.certificate-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+}
 
+.certificate {
+  flex-shrink: 0;
+}
   .certificate-page p{
     font-size:15px;
     margin-bottom:20px;

@@ -56,12 +56,7 @@ export default function CertificatePage() {
 
       </div>
 
-      <button
-        onClick={downloadCertificate}
-        className="download-btn"
-      >
-        Download Certificate
-      </button>
+      
 
     </div>
 

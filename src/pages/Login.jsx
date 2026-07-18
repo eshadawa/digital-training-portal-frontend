@@ -85,7 +85,7 @@ window.location.href = "/";
           className="login-card"
           onSubmit={handleLogin}
         >
-          <h2>Welcome Back 👋</h2>
+          <h2>Welcome👋</h2>
 
           <p>
             Login to continue your learning

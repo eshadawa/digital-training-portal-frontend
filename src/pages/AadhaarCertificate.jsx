@@ -47,12 +47,7 @@ export default function AadhaarCertificate() {
         </div>
       </div>
 
-      <button
-        onClick={downloadCertificate}
-        className="download-btn"
-      >
-        Download Certificate
-      </button>
+      
     </div>
   );
 }
