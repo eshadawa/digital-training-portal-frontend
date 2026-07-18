@@ -1,6 +1,7 @@
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import "./CertificatePage.css";
+import certificateImage from "../assets/certificate1.png";
 
 export default function CertificatePage() {
 

@@ -411,6 +411,10 @@ path="/course/digilocker/completed"
 element={<CertificatePage/>}
 />
 <Route
+  path="/digilocker-certificate"
+  element={<CertificatePage />}
+ />
+<Route
   path="/certificate"
   element={<CertificatePage />}
 />
